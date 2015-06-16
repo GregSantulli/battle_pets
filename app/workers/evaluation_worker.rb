@@ -1,17 +1,12 @@
 class EvaluationWorker
   include Sneakers::Worker
-  # This worker will connect to "dashboard.posts" queue
-  # env is set to nil since by default the actuall queue name would be
-  # "dashboard.posts_development"
+
   from_queue "competition.evaluate", env: nil
 
-  # work method receives message payload in raw format
-  # in our case it is JSON encoded string
-  # which we can pass to RecentPosts service without
-  # changes
-  def work(competition)
-    p "INSIDE EvaluationWorker.work"
+  def work(competition_id)
+    competition = Competition.find(competition_id.to_i)
     competition.evaluate
-    ack! # we need to let queue know that message was received
+    ack! #let queue know that message was received
   end
+
 end

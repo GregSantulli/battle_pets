@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe CompetitionsController, type: :routing do
+RSpec.describe Api::V1::CompetitionsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do

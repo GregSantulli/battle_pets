@@ -25,5 +25,10 @@ module ApiChallenge
 
     config.autoload_paths += %W(#{Rails.root}/app/workers)
 
+    config.generators do |g|
+      g.fixture_replacement :factory_girl,
+      dir: "spec/factories"
+    end
+
   end
 end

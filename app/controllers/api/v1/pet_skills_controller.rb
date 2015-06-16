@@ -1,4 +1,4 @@
-class PetSkillsController < ApplicationController
+class Api::V1::PetSkillsController < ApplicationController
   before_action :authenticate
   before_action :set_pet_skill, only: [:show, :update, :destroy]
 
@@ -29,7 +29,6 @@ class PetSkillsController < ApplicationController
         format.json { render json: @pet_skill.errors, status: :unprocessable_entity }
         format.xml { render xml: @pet_skill.errors, status: :unprocessable_entity }
       end
-      end
     end
   end
 
@@ -55,12 +54,12 @@ class PetSkillsController < ApplicationController
 
   private
 
-    def set_pet_skill
-      @pet_skill = PetSkill.find(params[:id])
-    end
+  def set_pet_skill
+    @pet_skill = PetSkill.find(params[:id])
+  end
 
-    def pet_skill_params
-      params.require(:pet_skill).permit(:level, :battle_pet_id, :skill_id)
-    end
+  def pet_skill_params
+    params.require(:pet_skill).permit(:level, :battle_pet_id, :skill_id)
+  end
 
 end

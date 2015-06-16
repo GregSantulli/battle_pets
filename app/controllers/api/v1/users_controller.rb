@@ -51,6 +51,12 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def summon
+    pet_to_summon = BattlePet.find_by_name(user_params[:pet])
+
+
+  end
+
   private
 
   def set_user
@@ -58,7 +64,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:name, :password, :password_confirmation, :battle_pet)
   end
 
 end

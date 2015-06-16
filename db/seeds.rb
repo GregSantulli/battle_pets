@@ -7,13 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
-BattlePet.create(name: "pikachu")
-BattlePet.create(name: "charzard")
-BattlePet.create(name: "squirtle")
-
 Skill.create(name: "strength")
 Skill.create(name: "agility")
 Skill.create(name: "senses")
 Skill.create(name: "intelligence")
+
+
+BattlePet.create(name: "pikachu")
+BattlePet.create(name: "charzard")
+BattlePet.create(name: "squirtle")
 

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150616005425) do
 
   create_table "battle_pets", force: :cascade do |t|
     t.string   "name"
+    t.integer  "experience"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150616005425) do
 
   create_table "competitions", force: :cascade do |t|
     t.integer  "winner_id"
+    t.string   "hash_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "complete"

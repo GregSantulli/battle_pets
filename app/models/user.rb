@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
 
   before_create :set_auth_token
 
+  def summon(battle_pet_name)
+    pet_to_summon = BattlePet.find_by_name(battle_pet_name)
+    pet_to_summon.user_id = self.id
+    pet_to_summon.save
+  end
+
   private
 
   def set_auth_token
