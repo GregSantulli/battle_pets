@@ -5,12 +5,17 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :skills, :defaults => { :format => 'json' }
-      resources :users, :defaults => { :format => 'json' }
+      resources :users, :defaults => { :format => 'json' } do
+        post '/summon', to: 'users#summon'
+      end
       resources :battle_pets, :defaults => { :format => 'json' } do
+
         resources :pet_skills, :defaults => { :format => 'json' }
       end
     end
   end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

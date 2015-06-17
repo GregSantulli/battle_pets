@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate, only: [:index, :show, :update, :destroy]
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :summon]
 
   def index
     @users = User.all
@@ -52,9 +52,13 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def summon
-    pet_to_summon = BattlePet.find_by_name(user_params[:pet])
-
-
+    @battle_pet = BattlePet.find_by_name(user_params[:battle_pet])
+    @battle_pet.user_id = @user.id
+    @battle_pet.save
+    respond_to do |format|
+      format.json { render json: @battle_pet }
+      format.xml { render xml: @battle_pet }
+    end
   end
 
   private

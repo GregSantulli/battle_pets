@@ -1,6 +1,6 @@
 class Api::V1::BattlePetsController < ApplicationController
   before_action :authenticate
-  before_action :set_battle_pet, only: [:show, :update, :destroy]
+  before_action :set_battle_pet, only: [:show, :update, :destroy, :attack]
 
 
   def index
@@ -48,6 +48,14 @@ class Api::V1::BattlePetsController < ApplicationController
     respond_to do |format|
       format.json { head :no_content, status: :ok }
       format.xml { head :no_content, status: :ok }
+    end
+  end
+
+  def fight
+    # trigger attack method on another battlepet
+    respond_to do |format|
+      format.json { render json: @battle_pet }
+      format.xml { render xml: @battle_pet }
     end
   end
 
